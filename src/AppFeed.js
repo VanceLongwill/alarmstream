@@ -2,20 +2,11 @@ import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import {Button, Card, Icon, Grid, Feed, Form, TextArea, Sidebar, Modal, Segment, Header, Container, Input, Popup, Radio} from 'semantic-ui-react';
-import {createNewAlarm} from './Helpers.js';
-import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs.js';
+import {createNewAlarm} from './Helpers';
+import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs';
+import { Clock, AlarmIconToggle, AlarmFormSuccess } from './Components'
 
 export class AppFeed extends Component {
-  render(){
-    return(
-      <AlarmApp />
-    );
-  }
-}
-
-
-
-class AlarmApp extends Component {
   state = {
     alarms:  [
           {
@@ -89,23 +80,11 @@ class AlarmApp extends Component {
                 onToggleAlarm={this.handleAlarmToggle}
                 onDeleteAlarm={this.handleAlarmDelete}
                />
-              <ToggleableAlarmForm onAlarmFormSubmit={this.handleFormSubmit}/>
+              <AlarmFormOpenButton />
             </div>
           </div>
         </div>
 
-    );
-  }
-}
-
-class Clock extends Component {
-  render(){
-    return(
-      <Segment className="clock-segment">
-        <span className="clock">
-          {this.props.time.format("HH:mm")}
-        </span>
-      </Segment>
     );
   }
 }
@@ -172,11 +151,10 @@ class AlarmsFeed extends Component {
   }
 }
 
-class AlarmIconToggle extends Component {
-  render() {
-    const iconToggle = this.props.isActive ? "alarm" : "alarm mute";
+class AlarmFormOpenButton extends Component {
+  render(){
     return(
-      <Icon name={iconToggle} onClick={this.props.onToggleAlarm} size="large"></Icon>
+      <Link to='/new'><Button basic big><Icon name="plus" size="large" /></Button></Link>
     );
   }
 }
@@ -264,7 +242,7 @@ class ToggleableAlarmForm extends Component {
       const activeStep = stepForm[this.state.step];
       return (
         <Modal
-          trigger={<Button basic big onClick={this.handleOpen}><Icon name="plus" size="large" /></Button>}
+          trigger={<p> old shit </p>}
           open={this.state.modalOpen}
           onClose={this.handleClose}
           basic
@@ -283,22 +261,6 @@ class ToggleableAlarmForm extends Component {
         </Modal>
       )
     }
-}
-
-class ButtonStepGroup extends Component {
-  render(){
-    const {backButtonText, forwardButtonText, onBack, onForward} = this.props;
-    return(
-      <div className="buttons-form-bottom">
-        <Button color='yellow' onClick={onBack} inverted>
-               <Icon name='arrow left' /> {backButtonText}
-        </Button>
-        <Button color='green' onClick={onForward} inverted>
-              {forwardButtonText} <Icon name='arrow right' />
-        </Button>
-      </div>
-    );
-  }
 }
 
 class AlarmForm extends Component {
@@ -364,59 +326,6 @@ class AlarmForm extends Component {
     const activeFormStep = formSteps[this.props.step];
     return(
       activeFormStep
-    );
-  }
-}
-
-class AlarmFormSuccess extends Component {
-  render(){
-    return(
-      <div id="alarm-form-success">
-        <h3>{this.props.title}</h3>
-        <p>{this.props.note}</p>
-        <Clock time={this.props.time}/>
-        <Button positive onClick={this.props.onSubmit} fluid>
-              Add your alarm <Icon name='alarm' />
-        </Button>
-      </div>
-    );
-  }
-}
-
-class OldAlarm extends Component {
-  render() {
-      let humanDate = this.props.time.format('dddd, MMMM Do');
-      let humanHours = this.props.time.format('hh');
-      let humanMins = this.props.time.format('mm');
-      return (
-        <Card className="dashboardCard">
-          <Card.Content>
-            <Card.Header>
-              <AlarmIconToggle isActive={this.props.isActive} />
-              <div className="title">
-                {this.props.title}
-              </div>
-              <div className="note">
-                {this.props.note}
-              </div>
-            </Card.Header>
-            <Card.Content>
-              <h3 className="alarm-clock-date">{humanDate}</h3>
-              <div className="clock">
-                <span className="timePrint">{humanHours}</span>
-                <span>:</span>
-                <span className="timePrint">{humanMins}</span>
-              </div>
-
-            </Card.Content>
-          </Card.Content>
-
-          <Button.Group attached="bottom" compact className="cardButtons">
-            <Button positive>Edit</Button>
-            <Button negative>Remove</Button>
-          </Button.Group>
-
-        </Card>
     );
   }
 }
