@@ -9,6 +9,7 @@
     "react-day-picker": "^6.1.0",
     "react-dom": "^15.6.1",
     "react-native-uuid": "^1.4.9",
+    "react-router-dom": "^4.1.2",
     "semantic-ui-react": "^0.71.1"
   },
   "devDependencies": {
