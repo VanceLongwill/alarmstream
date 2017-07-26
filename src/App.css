@@ -1,0 +1,90 @@
+.top {
+  text-align: center;
+  position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 9999;
+ width: 100%;
+ height: 50px;
+ opacity: 1;
+ background-color: white;
+ border-bottom-style: groove;
+ border-color: #000;
+}
+
+.top i {
+  margin-top: 20px;
+}
+
+.middle {
+  margin-top: 60px !important;
+  text-align: center;
+  margin: 0px auto;
+  background-color: #fff;
+  padding: 10px;
+  overflow-x:hidden;
+}
+.clock-segment {
+  width: 80%;
+  margin: 0px auto;
+  text-align: center;
+}
+.clock {
+  font-size: 40px;
+  color: black !important;
+  // margin: 10px auto;
+}
+
+.icon.large.plus {
+  margin: 0px !important;
+}
+
+.event {
+  border-bottom-width: thin;
+  border-bottom-style: inset;
+  padding-bottom: 10px !important;
+}
+
+.activeIcon {
+ color: black;
+}
+.disabledIcon {
+  color: grey;
+}
+.alarm-container {
+  margin: 0px auto;
+  /*padding-left: 10%;
+  padding-right: 10%;*/
+}
+
+.grey-out-text {
+  color: grey !important;
+}
+
+.timeInput {
+  margin: 0px auto;
+  text-align: center;
+  font-weight: boldest;
+  font-size: 60px;
+  padding-top: 40%;
+  padding-bottom: 40%;
+}
+.hoursInput .minsInput {
+  color: white !important;
+}
+
+#hoursInput, #minsInput {
+  width: 60%;
+  text-align: center;
+  color: white !important;
+}
+
+input, textarea {
+  color: white !important;
+}
+
+#note-input {
+  background: transparent;
+  padding: 20px;
+  width: 100%;
+}
