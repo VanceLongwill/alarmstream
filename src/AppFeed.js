@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import {Button, Card, Icon, Grid, Feed, Form, TextArea, Sidebar, Modal, Segment, Header, Container, Input, Popup, Radio} from 'semantic-ui-react';
 import {createNewAlarm} from './Helpers';
-import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs';
 import { Clock, AlarmIconToggle, AlarmFormSuccess } from './Components'
 
 export class AppFeed extends Component {
