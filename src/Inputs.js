@@ -15,7 +15,7 @@ export class TitleInput extends Component {
     });
   }
   componentWillUnmount = () => {
-    this.props.onTitleSubmit(this.state.value);
+    this.props.onSubmit(this.state.value);
   }
   render(){
     return(
@@ -40,7 +40,7 @@ export class NoteInput extends Component {
     });
   }
   componentWillUnmount = () => {
-    this.props.onNoteSubmit(this.state.value);
+    this.props.onSubmit(this.state.value);
   }
   render(){
     return(
@@ -152,7 +152,7 @@ export class TimeInput extends Component {
           // icon="clock"
           iconPosition="left"
           onChange={this.handleHoursChange}
-          onBlur={this.handleBlur}
+          // onBlur={this.handleBlur}
           //onkeypress={this.handleKeyPress}
         />
       </span>

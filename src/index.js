@@ -9,19 +9,17 @@ import registerServiceWorker from './registerServiceWorker';
 class Routes extends Component {
   render() {
     return(
-      <div>
-        <Header />
-        <App />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <App />
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
-ReactDOM.render(
-
-  <BrowserRouter>
-    <Routes />
-  </BrowserRouter>,
+ReactDOM.render( <Routes />,
 
 document.getElementById('root'));
 registerServiceWorker();

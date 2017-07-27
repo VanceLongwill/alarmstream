@@ -17,7 +17,7 @@
 }
 
 .middle {
-  margin-top: 20px !important;
+  margin-top: 60px !important;
   text-align: center;
   margin: 0px auto;
   background-color: #fff;
@@ -69,19 +69,19 @@
   padding-top: 40%;
   padding-bottom: 40%;
 }
-.hoursInput .minsInput {
+/*.hoursInput .minsInput {
   color: white !important;
-}
+}*/
 
-#hoursInput, #minsInput {
+/*#hoursInput, #minsInput {
   width: 60%;
   text-align: center;
   color: white !important;
-}
+}*/
 
-input, textarea {
+/*input, textarea {
   color: white !important;
-}
+}*/
 
 #note-input {
   background: transparent;
