@@ -148,7 +148,7 @@ class AlarmsFeed extends Component {
 class AlarmFormOpenButton extends Component {
   render(){
     return(
-      <Link to={'/new'}><Button basic big><Icon name="plus" size="large" /></Button></Link>
+      <Link to={'/new'}><Button basic id='bottomButton'><Icon name="plus" size="large" /></Button></Link>
     );
   }
 }

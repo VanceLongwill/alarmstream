@@ -13,27 +13,37 @@ class SlideForm extends Component {
     progress: 0,
     rootURL: "/new"
   };
+
+
+  handleAlarmFormSubmit = (attrs) => {
+      console.log(attrs);
+  }
+
   prevStep = () => {
+    if (this.state.progress < 1) {
+      console.log('Go back');
+      this.handleAlarmFormSubmit("done");
+      this.props.history.push('/');
+    }
     this.setState({
-      progress: this.state.progress + -1,
+      progress: this.state.progress - 1,
     });
     //this.props.history.push(`${this.state.rootURL}/${this.state.progress}`);
   }
   nextStep = () => {
     // console.log(this.props.location.pathname);
     // let page = this.props.location.pathname.substr(1);
-    if (this.state.progress > 6) {
-      console.log('>6');
-      this.props.history.push('/')
+    console.log(this.state.progress);
+    if (this.state.progress > 3) {
+      console.log('Time to submit');
+      this.handleAlarmFormSubmit("done");
+      this.props.history.push('/');
     }
     this.setState({
       progress: this.state.progress + 1,
     });
   }
 
-  handleAlarmFormSubmit = (attrs) => {
-    console.log(attrs);
-  }
   swiping() {
 
   }
@@ -71,6 +81,7 @@ handleDownSwipe = (e, deltaX, deltaY, isFlick, velocity) => {
                next={this.nextStep}
                prev={this.prevStep}
              />
+             <p id="swipeBottom">^^^^ <strong>Swipe up to continue</strong> ^^^^<Icon></Icon></p>
         </div>
     </Swipeable>
     )
@@ -164,9 +175,8 @@ class AlarmForm extends Component {
     ];
 
     return (
-      <div> {/* SWIPABLE DIV */}
+      <div>
         {components[this.props.step]}
-        <p onClick={this.handleForward}>CLICK ME!</p>
       </div>
     );
 }
