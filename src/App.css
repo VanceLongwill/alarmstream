@@ -88,3 +88,8 @@
   padding: 20px;
   width: 100%;
 }
+
+#alarm-form-container{
+  position: fixed;
+  width: 100%;
+}

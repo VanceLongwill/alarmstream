@@ -5,6 +5,8 @@ import moment from 'moment';
 import { Header, Button, Icon } from 'semantic-ui-react';
 import { Clock } from './Components';
 import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs';
+import Swipeable from 'react-swipeable'
+
 
 class SlideForm extends Component {
   state = {
@@ -15,29 +17,62 @@ class SlideForm extends Component {
     this.setState({
       progress: this.state.progress + -1,
     });
-    this.props.history.push(`${this.state.rootURL}/${this.state.progress}`);
+    //this.props.history.push(`${this.state.rootURL}/${this.state.progress}`);
   }
   nextStep = () => {
     // console.log(this.props.location.pathname);
     // let page = this.props.location.pathname.substr(1);
+    if (this.state.progress > 6) {
+      console.log('>6');
+      this.props.history.push('/')
+    }
     this.setState({
       progress: this.state.progress + 1,
     });
-    this.props.history.push(`${this.state.rootURL}/${this.state.progress}`);
   }
 
   handleAlarmFormSubmit = (attrs) => {
     console.log(attrs);
   }
+  swiping() {
+
+  }
+
+  swiped = (e, deltaX, deltaY, isFlick, velocity) => {
+      // console.log('Swiped...', e, deltaX, deltaY, isFlick, velocity)
+      // if (isFlick) {
+      //   this.nextStep();
+      // }
+    }
+handleUpSwipe = (e, deltaX, deltaY, isFlick, velocity) => {
+  console.log('up swipe')
+  this.nextStep();
+}
+handleDownSwipe = (e, deltaX, deltaY, isFlick, velocity) => {
+  console.log('down swipe')
+  this.prevStep();
+}
 
   render() {
     return(
-      <div className="alarm-form-container">
-        <Header>
-          Create a new alarm
-        </Header>
-        <AlarmForm step={this.state.progress} onSubmit={this.handleAlarmFormSubmit} next={this.nextStep} prev={this.prevStep} />
-      </div>
+      <Swipeable
+        onSwiping={this.swiping}
+        onSwiped={this.swiped}
+        onSwipedUp={this.handleUpSwipe}
+        onSwipedDown={this.handleDownSwipe}
+        >
+          <div id="alarm-form-container">
+            <Header>
+              Create a new alarm
+            </Header>
+            <AlarmForm key={this.state.progress}
+               step={this.state.progress}
+               onSubmit={this.handleAlarmFormSubmit}
+               next={this.nextStep}
+               prev={this.prevStep}
+             />
+        </div>
+    </Swipeable>
     )
   }
 }
