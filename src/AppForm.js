@@ -1,22 +1,40 @@
-import React, { Component} from 'react';
+import React, { Component, PropTypes} from 'react';
 import { Link, Route, withRouter } from 'react-router-dom';
 // import { hashHistory } from 'react-router';
 import moment from 'moment';
 import { Header, Button, Icon } from 'semantic-ui-react';
 import { Clock } from './Components';
 import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs';
-import Swipeable from 'react-swipeable'
+//import Swipeable from 'react-swipeable';
+import { ViewPager, Frame, Track, View, AnimatedView } from 'react-view-pager';
+import './main.css';
 
+// import { spring } from 'react-motion';
+// import Transition from 'react-motion-ui-pack';
+const animations = [{
+  prop: 'scale',
+  stops: [
+    [-200, 0.85],
+    [0, 1],
+    [200, 0.85]
+  ]
+}, {
+  prop: 'opacity',
+  stops: [
+    [-200, 0.15],
+    [0, 1],
+    [200, 0.15]
+  ]
+}]
 
 class SlideForm extends Component {
   state = {
     progress: 0,
     rootURL: "/new"
   };
-
-
   handleAlarmFormSubmit = (attrs) => {
       console.log(attrs);
+      this.props.history.push('/');
   }
 
   prevStep = () => {
@@ -65,28 +83,30 @@ handleDownSwipe = (e, deltaX, deltaY, isFlick, velocity) => {
 
   render() {
     return(
-      <Swipeable
-        onSwiping={this.swiping}
-        onSwiped={this.swiped}
-        onSwipedUp={this.handleUpSwipe}
-        onSwipedDown={this.handleDownSwipe}
-        >
-          <div id="alarm-form-container">
-            <Header>
-              Create a new alarm
-            </Header>
-            <AlarmForm key={this.state.progress}
-               step={this.state.progress}
-               onSubmit={this.handleAlarmFormSubmit}
-               next={this.nextStep}
-               prev={this.prevStep}
-             />
-             <p id="swipeBottom">^^^^ <strong>Swipe up to continue</strong> ^^^^<Icon></Icon></p>
-        </div>
-    </Swipeable>
-    )
+  <AlarmForm
+    onAlarmSubmit={this.handleAlarmFormSubmit}
+  />
+  )
   }
 }
+
+
+
+const ProgressBar = ({ progress }) => (
+  <div className="progress-container">
+    <div
+      className="progress-bar"
+      style={{
+        transform: `scaleX(${Math.max(0, Math.min(1, progress))})`,
+      }}
+    />
+  </div>
+)
+const colors = ['#209D22', '#106CCC', '#C1146B', '#11BDBF', '#8A19EA']
+
+
+
+
 
 // export class AppForm extends Component {
 //     render(){
@@ -113,12 +133,14 @@ class AlarmForm extends Component {
 
   handleSubmit = () => {
     if (this.state.id===null) {
+      console.log(this.state)
       this.props.onSubmit(this.state);
     } else {
       // ADD UPDATE FUNCTION FOR EDITING ALARMS
     }
   }
   handleDateUpdate = (date) => {
+    console.log(date);
       const newMoment = moment(date, "MMM DD YYYY");
       const timeFromMoment = {
         hour:  this.state.time.hour(),
@@ -129,13 +151,19 @@ class AlarmForm extends Component {
         time: newMoment.set(timeFromMoment),
       });
     }
-
+    handleAlarmSubmit = () => {
+      if (this.state.id===null) {
+        this.props.onAlarmSubmit(this.state);
+      } else {
+        // ADD UPDATE FUNCTION FOR EDITING ALARMS
+      }
+    }
     handleTitleUpdate = (titleInput) => {
       this.setState({
         title: titleInput || null,
       });
     }
-    handleNoteUpdate= (noteInput) => {
+    handleNoteUpdate = (noteInput) => {
       this.setState({
         note: noteInput || null,
       });
@@ -148,36 +176,49 @@ class AlarmForm extends Component {
     // componentWillUnmount() {
     //   this.onUnmount={}
     // }
-    handleAlarmSubmit = () => {
-      if (this.state.id===null) {
-        this.props.onAlarmSubmit(this.state);
-      } else {
-        // ADD UPDATE FUNCTION FOR EDITING ALARMS
+
+    handleViewChange = (currentIndicies) => {
+      this.setState({ progress: currentIndicies[0] })
+    }
+    handleSwipeEnd = () => {
+      if (this.state.progress > 3) {
+        this.handleAlarmSubmit();
       }
     }
-
-    handleForward = () => {
-      this.props.next();
-    }
-
   render() {
     const components = [
-      <DateSelect moment={moment()} onUpdate={this.handleDateUpdate}/>,
-      <TimeSelect moment={moment()} onUpdate={this.handleUpdate} />,
+      <DateSelect moment={this.state.time} onUpdate={this.handleDateUpdate}/>,
+      <TimeSelect moment={this.state.time} onUpdate={this.handleTimeUpdate} />,
       <TitleSelect value={this.state.title} onSubmit={this.handleTitleUpdate}/>,
       <NoteSelect value={this.state.note} onSubmit={this.handleNoteUpdate} />,
       <AlarmFormSuccess
-         note={this.state.note}
-         time={this.state.time}
-         title={this.state.title}
-         onSubmit={this.handleSubmit}
+        note={this.state.note}
+        time={this.state.time}
+        title={this.state.title}
+        //onSubmit={this.handleSubmit}
       />
     ];
 
     return (
-      <div>
-        {components[this.props.step]}
-      </div>
+      <ViewPager>
+        <Frame autoSize className="frame" accessibility={false}>
+          <Track ref={c => this.track = c} axis="y" animations={animations}
+            className="track track-y"    onViewChange={this.handleViewChange} onSwipeEnd={this.handleSwipeEnd}>
+            {
+              components.map((component, index) => {
+                return(
+                  <View className="view" key={index}>
+                    {component}
+                  </View>
+                )
+              })
+            }
+          </Track>
+        </Frame>
+        <p id="swipeBottom">
+          {(this.state.progress !== 4) ? "Swipe up to continue" : "Swipe up to confirm your alarm" }
+        </p>
+      </ViewPager>
     );
 }
 }
@@ -215,9 +256,9 @@ const AlarmFormSuccess = (props) => (
     <h3>{props.title}</h3>
     <p>{props.note}</p>
     <Clock time={props.time}/>
-    <Button positive onClick={props.onSubmit} fluid>
-          Swipe up to confirm your alarm <Icon name='alarm' />
-    </Button>
+    {/* <Button positive onClick={props.onSubmit} fluid>
+      Swipe up to confirm your alarm <Icon name='alarm' />
+    </Button> */}
   </div>
 );
 

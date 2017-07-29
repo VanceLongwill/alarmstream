@@ -13,7 +13,9 @@ export class TitleInput extends Component {
     this.setState({
       value: data.value,
     });
+    this.props.onSubmit(this.state.value);
   }
+
   componentWillUnmount = () => {
     this.props.onSubmit(this.state.value);
   }
@@ -21,6 +23,7 @@ export class TitleInput extends Component {
     return(
       <Input placeholder='Enter a title for your alarm here'
         type='text'
+        value={this.state.value}
         id="title-input"
         transparent fluid
         onChange={this.handleChange}
@@ -38,13 +41,21 @@ export class NoteInput extends Component {
     this.setState({
       value: data.value,
     });
+    this.props.onSubmit(data.value);
   }
   componentWillUnmount = () => {
     this.props.onSubmit(this.state.value);
   }
   render(){
     return(
-      <TextArea placeholder='Write a note (optional)' id="note-input" rows={8} autoHeight={false} onChange={this.handleChange} />
+      <TextArea
+        placeholder='Write a note (optional)'
+        id="note-input"
+        rows={8}
+        autoHeight={false}
+        onChange={this.handleChange}
+        value={this.state.value}
+      />
     );
   }
 }
@@ -76,10 +87,10 @@ export class DateInput extends Component {
         <div className="date-input-container">
           <p>Selected: {this.props.moment.format("Do MMM")} </p>
           <DayPicker
-          onDayClick={this.handleDayClick}
-          selectedDay={this.state.selectedDay}
-          disabledDays={ { before: new Date() } }
-        />
+            onDayClick={this.handleDayClick}
+            selectedDay={this.state.selectedDay}
+            disabledDays={ { before: new Date() } }
+          />
         </div>
       );
   }

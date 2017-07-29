@@ -120,3 +120,26 @@
 } p {
   color: rgb(186, 178, 182);
 }
+
+
+/*
+              ANIMATIONS
+ */
+
+ .alarm-form-enter {
+   opacity: 0.01;
+ }
+
+ .alarm-form-enter.alarm-form-enter-active {
+   opacity: 1;
+   transition: opacity 500ms ease-in;
+ }
+
+ .alarm-form-leave {
+   opacity: 1;
+ }
+
+ .alarm-form-leave.alarm-form-leave-active {
+   opacity: 0.01;
+   transition: opacity 300ms ease-in;
+ }
