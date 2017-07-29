@@ -7,20 +7,17 @@ import './App.css';
 class App extends Component {
   render(){
     return(
-      <main>
-      <div className="AlarmApp">
-        <div className="middle">
+        <div id="AlarmApp">
 
           <Switch>
-              <Route exact path='/' component={AppFeed} />
-              <Route exact path='/edit' component={AppForm} />
-              <Route exact path='/new/*' component={AppForm} />
-              <Route exact path='/new' component={AppForm} />
+            <Route exact path='/' component={AppFeed} />
+            <Route exact path='/edit' component={AppForm} />
+            <Route exact path='/new/*' component={AppForm} />
+            <Route exact path='/new' component={AppForm} />
           </Switch>
 
-      </div>
-      </div>
-      </main>
+          
+        </div>
     );
   }
 }

@@ -85,7 +85,7 @@ export class DateInput extends Component {
   render() {
       return(
         <div className="date-input-container">
-          <p>Selected: {this.props.moment.format("Do MMM")} </p>
+          <p>{this.props.moment.format("Do MMM")} </p>
           <DayPicker
             onDayClick={this.handleDayClick}
             selectedDay={this.state.selectedDay}
@@ -148,8 +148,7 @@ export class TimeInput extends Component {
     const mins =  this.state.time.format("mm");
     return(
       <div className="timeInput">
-        <span className="timeInputHours">
-          <Input
+        <Input
           className="hoursInput noSelect"
           id="hoursInput"
           type="number"
@@ -161,34 +160,33 @@ export class TimeInput extends Component {
           placeholder={hours}
           value={hours}
           // icon="clock"
-          iconPosition="left"
+
           onChange={this.handleHoursChange}
           // onBlur={this.handleBlur}
           //onkeypress={this.handleKeyPress}
         />
-      </span>
-       <span className="timeInputMins">
+
+
         <Input
-        className="minsInput noSelect"
-        id="minsInput"
-        type="number"
-        labelPosition="left"
-        // maxlength="4"
-        autoComplete="off"
-        transparent
-        //size="massive"
-        //placeholder={placeholder}
-        placeholder={mins}
-        value={mins}
-        // icon="clock"
-        iconPosition="left"
-        onChange={this.handleMinsChange}
-        onBlur={this.handleBlur}
-        //onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-        //action="Enter a new time"
+          className="minsInput noSelect"
+          id="minsInput"
+          type="number"
+          labelPosition="left"
+          // maxlength="4"
+          autoComplete="off"
+          transparent
+          //size="massive"
+          //placeholder={placeholder}
+          placeholder={mins}
+          value={mins}
+          // icon="clock"
+          // iconPosition="left"
+          onChange={this.handleMinsChange}
+          onBlur={this.handleBlur}
+          //onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+          //action="Enter a new time"
         />
-      </span>
-    </div>
+      </div>
 
     );
   }

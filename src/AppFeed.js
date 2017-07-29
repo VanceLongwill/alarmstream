@@ -73,11 +73,13 @@ export class AppFeed extends Component {
   render() {
     return (
           <div className="alarm-container">
+            <Container>
               <AlarmsFeed alarms={this.state.alarms}
                 onToggleAlarm={this.handleAlarmToggle}
                 onDeleteAlarm={this.handleAlarmDelete}
-               />
-              <AlarmFormOpenButton />
+              />
+            </Container>
+            <AlarmFormOpenButton />
         </div>
     );
   }
@@ -91,15 +93,15 @@ class Alarm extends Component {
     this.props.onDeleteAlarm(this.props.id);
   }
   render() {
-    const willRing = this.props.active ? (<p>Alarm will ring in <a>{this.props.time.toNow(true)}</a></p>) : (<a>Alarm is disabled</a>);
+    const willRing = this.props.active ? (<p>Alarm will ring in <a>{this.props.time.toNow(true)}</a></p>) : (<p><a>Alarm is disabled</a></p>);
     return (
       <Feed.Event>
         <Feed.Label>
-           <AlarmIconToggle onToggleAlarm={this.handleToggle} isActive={this.props.active}/>
+          <AlarmIconToggle onToggleAlarm={this.handleToggle} isActive={this.props.active}/>
         </Feed.Label>
         <Feed.Content>
           <Feed.Summary>
-             <a>{this.props.title}</a>
+            <a>{this.props.title}</a>
             <Feed.Date>{this.props.dateCreated.fromNow()}</Feed.Date>
           </Feed.Summary>
           <Feed.Extra>

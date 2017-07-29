@@ -3,43 +3,54 @@
  position: fixed;
  top: 0;
  left: 0;
- width: 100%;
  z-index: 9999;
- width: 100%;
- height: 50px;
+ width: 100vw;
+ height: 8vh;
  opacity: 1;
  background-color: white;
  border-bottom-style: groove;
  border-color: #000;
 }
-
+#AlarmApp {
+  margin-top: 4vh;
+  width: 100vw;
+  height: 100%;
+  left: 0;
+  position: fixed;
+}
 .top i {
   margin-top: 20px;
 }
 
-.middle {
-  margin-top: 60px !important;
+/*.middle {
+  // margin-top: 60px !important;
   text-align: center;
   margin: 0px auto;
   background-color: #fff;
   padding: 10px;
   overflow-x:hidden;
-}
+}*/
+
 .clock-segment {
   width: 80%;
-  margin: 0px auto;
+  margin: 0px auto !important;
   text-align: center;
 }
 .clock {
   font-size: 40px;
   color: black !important;
+  vertical-align: middle;
   // margin: 10px auto;
 }
-
+div.meta > p {
+  padding-top: 10px;
+}
 .icon.large.plus {
   margin: 0px !important;
 }
-
+textarea {
+  border: 0;
+}
 .event {
   border-bottom-width: thin;
   border-bottom-style: inset;
@@ -54,6 +65,7 @@
 }
 .alarm-container {
   margin: 0px auto;
+  padding: 4vw;
   /*padding-left: 10%;
   padding-right: 10%;*/
 }
@@ -61,14 +73,33 @@
 .grey-out-text {
   color: grey !important;
 }
+#viewPager, #frame {
+  height: 100%;
+}
 
+.vh-center {
+  position: relative;
+ top: 45%;
+ transform: translateY(-50%);
+}
+
+.vh-center > div:first-child {
+  margin: 0 auto;
+  padding: 10px;
+}
+.vh-center h5 {
+  font-size: 2em;
+  color: grey;
+}
 .timeInput {
+  font-size: 5.5em;
   margin: 0px auto;
   text-align: center;
-  font-weight: boldest;
-  font-size: 60px;
-  padding-top: 40%;
-  padding-bottom: 40%;
+  font-weight: bolder;
+}
+#hoursInput, #minsInput {
+  width: 80vw;
+  text-align: center;
 }
 /*.hoursInput .minsInput {
   color: white !important;
@@ -106,9 +137,12 @@
   height: 50px;
   margin: 0px auto;
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
+  margin-bottom: 6vh;
 }
-
+#swipe-view {
+  height: 100%;
+}
 #swipeBottom {
   left: 0px;
   right: 0px;
@@ -120,26 +154,19 @@
 } p {
   color: rgb(186, 178, 182);
 }
+#alarmConfirmButton {
+  margin-top: 10vh;
+}
+.DayPicker {
+  width: 100%;
+}
+.DayPicker-Month {
+  width: 90vw;
+  height: 60vh;
+}
+ #swipe-view {
+   border: 1px solid black;
+   max-width: 100vw;
+   width: 100%;
 
-
-/*
-              ANIMATIONS
- */
-
- .alarm-form-enter {
-   opacity: 0.01;
- }
-
- .alarm-form-enter.alarm-form-enter-active {
-   opacity: 1;
-   transition: opacity 500ms ease-in;
- }
-
- .alarm-form-leave {
-   opacity: 1;
- }
-
- .alarm-form-leave.alarm-form-leave-active {
-   opacity: 0.01;
-   transition: opacity 300ms ease-in;
  }
