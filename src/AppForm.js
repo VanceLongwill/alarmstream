@@ -1,6 +1,4 @@
 import React, { Component, PropTypes} from 'react';
-import { Link, Route, withRouter } from 'react-router-dom';
-// import { hashHistory } from 'react-router';
 import moment from 'moment';
 import { Header, Button, Icon } from 'semantic-ui-react';
 import { Clock } from './Components';
@@ -25,23 +23,7 @@ const animations = [{
     [0, 1],
     [200, 0.15]
   ]
-}]
-
-class SlideForm extends Component {
-  handleAlarmFormSubmit = (attrs) => {
-      console.log(attrs);
-      this.props.history.push('/');
-  }
-  render() {
-    return(
-        <AlarmForm
-          onSubmit={this.handleAlarmFormSubmit}
-          //currentView={this.state.progress}
-        />
-  )
-  }
-}
-
+}];
 
 
 const ProgressBar = ({ progress }) => (
@@ -56,7 +38,7 @@ const ProgressBar = ({ progress }) => (
 )
 const colors = ['#209D22', '#106CCC', '#C1146B', '#11BDBF', '#8A19EA']
 
-class AlarmForm extends Component {
+export class AlarmForm extends Component {
   state = {
     "title": this.props.title || null,
     "note": this.props.note || null,
@@ -68,7 +50,6 @@ class AlarmForm extends Component {
 
   handleSubmit = () => {
     if (this.state.id===null) {
-      console.log(this.state)
       this.props.onSubmit(this.state);
     } else {
       // ADD UPDATE FUNCTION FOR EDITING ALARMS
@@ -201,5 +182,3 @@ const AlarmFormSuccess = (props) => (
     </Button>
   </div>
 );
-
-export const AppForm = withRouter(SlideForm);

@@ -29,10 +29,10 @@ class ButtonStepGroup extends Component {
     return(
       <div className="buttons-form-bottom">
         <Button color='yellow' onClick={onBack} inverted>
-               <Icon name='arrow left' /> {backButtonText}
+          <Icon name='arrow left' /> {backButtonText}
         </Button>
         <Button color='green' onClick={onForward} inverted>
-              {forwardButtonText} <Icon name='arrow right' />
+          {forwardButtonText} <Icon name='arrow right' />
         </Button>
       </div>
     );
@@ -47,11 +47,16 @@ class AlarmFormSuccess extends Component {
         <p>{this.props.note}</p>
         <Clock time={this.props.time}/>
         <Button positive onClick={this.props.onSubmit} fluid>
-              Add your alarm <Icon name='alarm' />
+          Add your alarm <Icon name='alarm' />
         </Button>
       </div>
     );
   }
 }
 
-export { Clock, AlarmIconToggle, AlarmFormSuccess };
+const AlarmFormOpenButton = (props) => (
+  <Button color='black' id='bottomButton' onClick={props.onClick}><Icon name="plus" size="large" /></Button>
+);
+
+
+export { Clock, AlarmIconToggle, AlarmFormSuccess, AlarmFormOpenButton};

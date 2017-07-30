@@ -1,7 +1,6 @@
 import uuid from 'react-native-uuid';
 import moment from 'moment';
 
-
 export function createNewAlarm (attrs) {
   return(
     {
@@ -13,4 +12,16 @@ export function createNewAlarm (attrs) {
         "dateCreated": moment(),
     }
   );
+
+}
+function updateAlarm (attrs) {
+
+
+
+}
+
+function deleteAlarm (alarmId) {
+
+  
+
 }

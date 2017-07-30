@@ -74,14 +74,14 @@ class AlarmApp extends Component {
   render() {
     return (
       <div className="AlarmApp">
-          <div className="middle" fluid>
-            <div className="alarm-container">
-              <AlarmsFeed alarms={this.state.alarms}
-                onToggleAlarm={this.handleAlarmToggle}
-                onDeleteAlarm={this.handleAlarmDelete}
-               />
-              <ToggleableAlarmForm onAlarmFormSubmit={this.handleFormSubmit}/>
-            </div>
+        <div className="middle" fluid>
+          <div className="alarm-container">
+            <AlarmsFeed alarms={this.state.alarms}
+              onToggleAlarm={this.handleAlarmToggle}
+              onDeleteAlarm={this.handleAlarmDelete}
+            />
+            <ToggleableAlarmForm onAlarmFormSubmit={this.handleFormSubmit}/>
+          </div>
           </div>
         </div>
 

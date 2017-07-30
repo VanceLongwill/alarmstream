@@ -1,25 +1,22 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import Header from './Header'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-class Routes extends Component {
+class Main extends Component {
   render() {
     return(
-      <BrowserRouter>
-        <div>
+        <div id='AlarmApp'>
           <Header />
           <App />
         </div>
-      </BrowserRouter>
     );
   }
 }
 
-ReactDOM.render( <Routes />,
+ReactDOM.render( <Main />,
 
 document.getElementById('root'));
 registerServiceWorker();

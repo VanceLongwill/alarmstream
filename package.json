@@ -1,27 +1,32 @@
 {
-  "name": "alarm_vance",
+  "name": "alarmstream",
   "version": "0.1.0",
+  "homepage": "https://vancelongwill.github.io/alarmstream",
   "private": true,
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
     "react-day-picker": "^6.1.0",
     "react-dom": "^15.6.1",
     "react-motion-ui-pack": "^0.10.3",
     "react-native-uuid": "^1.4.9",
-    "react-router-dom": "^4.1.2",
     "react-view-pager": "^0.5.1",
     "semantic-ui-react": "^0.71.1"
   },
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "react-scripts": "1.0.10"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }

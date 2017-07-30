@@ -10,21 +10,26 @@ export class TitleInput extends Component {
     value: this.props.value || "",
   }
   handleChange = (e, data) => {
+    this.props.onSubmit(data.value);
     this.setState({
       value: data.value,
     });
-    this.props.onSubmit(this.state.value);
   }
-
   componentWillUnmount = () => {
     this.props.onSubmit(this.state.value);
   }
   render(){
+  const inputStyle = {
+    margin: '0px auto',
+    width: '60vw',
+    'font-size': '1.3em',
+  };
     return(
-      <Input placeholder='Enter a title for your alarm here'
+      <Input placeholder='Enter a title'
+        id='titleInput'
         type='text'
         value={this.state.value}
-        id="title-input"
+        style={inputStyle}
         transparent fluid
         onChange={this.handleChange}
       />
