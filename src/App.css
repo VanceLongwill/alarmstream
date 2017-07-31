@@ -80,7 +80,7 @@ textarea {
   color: grey !important;
 }
 #viewPager, #frame {
-  height: 100%;
+  height: 90%;
 }
 
 .vh-center {
@@ -181,7 +181,7 @@ textarea {
 }
 .DayPicker-Month {
   width: 95%;
-  height: 60vh;
+  height: 50vh;
 }
  #swipe-view {
    border: 1px solid black;
@@ -222,3 +222,27 @@ div.extra p {
  div#alarmButtons button {
   margin-bottom: 1vh;
  }
+
+
+ #pagerControls {
+   margin: 0px auto;
+   position: absolute;
+   left: 0px;
+   bottom: 0px;
+   right: 0px;
+   height: 15vh;
+   width: 80%;
+   text-align: center;
+ }
+
+ #pagerControls a {
+   margin: 0px auto;
+ }
+
+/*
+ #nextSlide {
+
+ }
+#prevSlide  {
+
+}*/

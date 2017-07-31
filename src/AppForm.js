@@ -1,6 +1,6 @@
 import React, { Component, PropTypes} from 'react';
 import moment from 'moment';
-import { Header, Button, Icon } from 'semantic-ui-react';
+import { Grid, Header, Button, Icon } from 'semantic-ui-react';
 import { Clock } from './Components';
 import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs';
 import { ViewPager, Frame, Track, View, AnimatedView } from 'react-view-pager';
@@ -127,15 +127,32 @@ export class AlarmForm extends Component {
                     <div className="vh-center">
                       {component}
                     </div>
-
                   </View>
                 )
               })
             }
           </Track>
-          <p>swipe up </p>
         </Frame>
+        <Grid id="pagerControls" columns={2}>
 
+          <a
+            id="prevSlide"
+            onClick={() => this.track.prev()}
+          >
+            <Icon name="angle double up"></Icon>
+            Previous
+          </a>
+
+          <a
+            id="nextSlide"
+            onClick={() => this.track.next()}
+          >
+            <Icon name="angle double down"></Icon>
+            Next
+          </a>
+        </Grid>
+
+        {/* <ProgressBar progress={this.state.progress}/> */}
       </ViewPager>
     );
 }
