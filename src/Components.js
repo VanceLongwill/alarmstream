@@ -20,10 +20,16 @@ class Ringer extends Component {
 
   render(){
     return(
-      <Segment className="alarm-segment">
+      <Segment id="alarm-segment">
         <Transition animation={'shake'} duration={500} visible={this.state.visible}>
           <Icon size="massive" name="alarm" />
         </Transition>
+        <br /><br />
+        <div id="alarmButtons">
+          <Button basic fluid onClick={this.props.onSnooze}>Snooze</Button>
+          <Button negative fluid onClick={this.props.onTurnOff} >Turn Off</Button>
+        </div>
+
       </Segment>
     );
   }
@@ -37,6 +43,7 @@ class Clock extends Component {
         <span className="clock">
           {this.props.time.format("HH:mm")}
         </span>
+        {this.props.snoozed ? <p><br /><br />Alarm snoozed for 10 mins</p> : ("")}
       </Segment>
     );
   }
@@ -48,6 +55,7 @@ class AlarmClock extends Component {
     super(props);
     this.state = {
       isRinging: (this.props.time <= moment()),
+      snoozeVisible: false,
     };
     let timeUntilRing = (this.props.time - moment());
     // console.log(timeUntilRing); // .seconds() + " (will ring in) ");
@@ -56,12 +64,29 @@ class AlarmClock extends Component {
    },  timeUntilRing);
   }
 
+  handleSnooze = () => {
+    this.setState({
+      isRinging: false,
+      snoozeVisible: true,
+    });
+    const tenMins = 600000; // milliseconds
+    this.alarmTimeout = setTimeout(() => this.setState({ isRinging: true}), tenMins);
+    //alert("Alarm snoozed for 10 minutes");
+  }
+
+  handleTurnOff = () => {
+    this.setState({
+      isRinging: false,
+    });
+    this.props.onDisableAlarm();
+  }
+
   render(){
     if (this.props.isActive && this.state.isRinging) {
-      return( <Ringer /> );
+      return( <Ringer onSnooze={this.handleSnooze} onTurnOff={this.handleTurnOff}/> );
     } else {
       return(
-        <Clock time={this.props.time} />
+        <Clock time={this.props.time} snoozed={this.state.snoozeVisible}/>
       );
     }
   }

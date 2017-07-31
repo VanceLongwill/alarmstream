@@ -57,7 +57,7 @@ class Alarm extends Component {
       <p>{this.props.note}</p>
       <Grid columns={3}>
 
-        <AlarmClock time={this.props.time} isActive={this.props.active}/>
+        <AlarmClock time={this.props.time} isActive={this.props.active} onDisableAlarm={this.handleToggle}/>
         <Icon name="trash" size="large" onClick={this.handleTrashClick}/>
         <Confirm
           open={this.state.showConfirmDelete}

@@ -207,3 +207,18 @@ div.extra p {
  div.meta p {
    padding-top: 4vh !important;
  }
+
+ #alarm-segment {
+   width: 80%;
+   margin: 0px auto !important;
+   text-align: center;
+ }
+
+ #alarmButtons {
+   width: 60%;
+   margin: 0px auto;
+ }
+
+ div#alarmButtons button {
+  margin-bottom: 1vh;
+ }
