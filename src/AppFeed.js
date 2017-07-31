@@ -1,7 +1,7 @@
 import React, { Component, PureComponent} from 'react';
 import moment from 'moment';
 import {Confirm, Button, Card, Icon, Grid, Feed, Form, TextArea, Sidebar, Modal, Segment, Header, Container, Input, Popup, Radio} from 'semantic-ui-react';
-import { Clock, AlarmIconToggle, AlarmFormSuccess } from './Components';
+import { AlarmClock, AlarmIconToggle, AlarmFormSuccess, Clock } from './Components';
 
 const animations = [{
   prop: 'scale',
@@ -56,7 +56,7 @@ class Alarm extends Component {
       <p>{this.props.note}</p>
       <Grid columns={3}>
 
-        <Clock time={this.props.time}/>
+        <AlarmClock time={this.props.time} isActive={this.props.active}/>
         <Icon name="trash" size="large" onClick={this.handleTrashClick}/>
         <Confirm
           open={this.state.showConfirmDelete}
@@ -77,12 +77,6 @@ class Alarm extends Component {
   }
 
   export class AlarmsFeed extends Component {
-    handleScroll = () => {
-
-    }
-    handleAppear = () => {
-
-    }
     render() {
 
       const feedItemsList = this.props.alarms.map((alarm)=>{
@@ -102,10 +96,7 @@ class Alarm extends Component {
       });
       return(
       <Feed>
-
-
         {feedItemsList}
-
       </Feed>
 
     );

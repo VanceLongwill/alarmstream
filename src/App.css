@@ -194,6 +194,16 @@ textarea {
    background-color: transparent !important;
  }
 
+i.trash.large.icon{
+  margin-top: 3vh !important;
+}
  div.ui.segment.clock-segment {
    padding: 3vh !important;
+   width: 60%;
+ }
+div.extra p {
+  padding-bottom: 4vh !important;
+}
+ div.meta p {
+   padding-top: 4vh !important;
  }

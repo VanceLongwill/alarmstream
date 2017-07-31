@@ -1,87 +1,103 @@
 import React, { Component } from 'react';
 import {Button, Card, Icon, Grid, Feed, Form, TextArea, Sidebar, Modal, Segment, Header, Container, Input, Popup, Radio} from 'semantic-ui-react';
 import moment from 'moment';
-import {createNewAlarm} from './Helpers';
+import { createNewAlarm } from './Helpers';
 import { AlarmForm } from './AppForm';
 import { AlarmsFeed} from './AppFeed';
 import {AlarmFormOpenButton} from './Components';
+import { exampleAlarms } from './exampleAlarmData';
 import './App.css';
 import './main.css';
 
+
 export class App extends Component {
+
   state = {
     alarmFormOpen: false,
-    alarms:  [
-          {
-              "title": "Clear paper jam",
-              "note": "Office Chores",
-              "time": moment("2017-08-08 09:30"),
-              "id": "a73c1d19-f32d-4aff-b470-cea4e792406a",
-              "isActive": false,
-              "dateCreated": moment("2017-06-08 02:30")
-          },
-          {
-              "title": "Vance Updated 2",
-              "note": "Now  is new2 ",
-              "id": "40f768b0-100b-4a60-924e-f40abf67e35b",
-              "time": moment("2017-07-28 19:40"),
-              "isActive": false,
-              "dateCreated": moment("2017-07-08 15:30")
-
-          },
-          {
-              "title": "asdasd 2",
-              "note": "asdasd 2",
-              "id": "cc84ce3b-f597-4b05-aa36-71a775fefcd2",
-              "time": moment("2017-07-26 07:30"),
-              "isActive": true,
-              "dateCreated": moment("2017-07-20 07:30")
-          },
-          {
-              "title": "Clear paper jam",
-              "note": "Office Chores",
-              "time": moment("2017-08-08 09:30"),
-              "id": "a78c1d19-f32d-4aff-b470-cea4e792406a",
-              "isActive": false,
-              "dateCreated": moment("2017-06-08 02:30")
-          },
-          {
-              "title": "Clear paper jam",
-              "note": "Office Chores",
-              "time": moment("2017-08-08 09:30"),
-              "id": "a79c1d19-f32d-4aff-b470-cea4e792406a",
-              "isActive": false,
-              "dateCreated": moment("2017-06-08 02:30")
-          },
-          {
-              "title": "Clear paper jam",
-              "note": "Office Chores",
-              "time": moment("2017-08-08 09:30"),
-              "id": "a74c1d19-f32d-4aff-b470-cea4e792406a",
-              "isActive": false,
-              "dateCreated": moment("2017-06-08 02:30")
-          }
-      ].sort((a, b) => (b.dateCreated - a.dateCreated)),
+    alarms:  [],
   }
 
+  componentDidMount() {
+    this.interval = setInterval(() => this.updateStore(), 1000);
+    this.populateAlarms();
+ }
+
+ updateStore = () => {
+   //console.log("stored");
+   localStorage.setItem('alarms', this.alarmsToJson(this.state.alarms));
+ }
+
+ alarmsToJson = (alarms) => {
+   return JSON.stringify(
+     alarms.map(
+       (alarm, index) => {
+         return Object.assign({}, alarm, {
+           time: alarm.time.unix(),
+           dateCreated: alarm.dateCreated.unix()
+         });
+       }
+     )
+   );
+ }
+ populateAlarms = () => {
+
+   const cachedAlarms = localStorage.getItem('alarms');
+   if (cachedAlarms) {
+     console.log('using cache');
+     let cachedAlarmsData = JSON.parse(cachedAlarms);
+     this.setState(
+       {
+         alarms: this.sortAlarmsByMostRecent( cachedAlarmsData.map(
+           (alarm, index) => {
+             return Object.assign({}, alarm, {
+               time: moment.unix(alarm.time),
+               dateCreated: moment.unix(alarm.dateCreated)
+             });
+           }
+         ))
+       });
+   } else {
+     this.setState(
+       {
+         alarms: this.sortAlarmsByMostRecent( exampleAlarms.map(
+           (alarm, index) => {
+             return Object.assign({}, alarm, {
+               time: moment.unix(alarm.time),
+               dateCreated: moment.unix(alarm.dateCreated)
+             });
+           }
+         ))
+       });
+     localStorage.setItem('alarms', JSON.stringify(exampleAlarms));
+   }
+ }
+  sortAlarmsByMostRecent = (alarms) => {
+    return alarms.sort((a, b) => (b.dateCreated - a.dateCreated));
+  }
   handleFormSubmit = (attrs) => {
     this.createAlarm(attrs);
     this.toggleAlarmFormVisibility();
   }
 
   createAlarm = (attrs) => {
+    let newAlarms = this.state.alarms.concat( createNewAlarm(attrs) ).sort((a, b) => (b.dateCreated - a.dateCreated));
+
     this.setState({
-      alarms: this.state.alarms.concat(
-        createNewAlarm(attrs)
-      ).sort((a, b) => (b.dateCreated - a.dateCreated))
+      alarms: newAlarms
     });
 
+    localStorage.setItem('alarms', this.alarmsToJson(newAlarms));
   }
+
   handleAlarmDelete = (alarmId) => {
+    let filteredAlarms = this.state.alarms.filter(a => a.id !== alarmId)
     this.setState({
-      alarms: this.state.alarms.filter(a => a.id !== alarmId),
+      alarms: filteredAlarms,
     });
+
+   localStorage.setItem('alarms', this.alarmsToJson(filteredAlarms));
   }
+
   handleAlarmToggle = (alarmId) => {
     this.toggleAlarm(alarmId);
   }
@@ -90,7 +106,7 @@ export class App extends Component {
     this.setState({
       alarms: this.state.alarms.map((alarm)=>{
         if (alarm.id === alarmId) {
-          //console.log("old: " + alarm.isActive+"new: " + (!alarm.isActive))
+          console.log("activated alarm : " + (!alarm.isActive));
           return Object.assign({}, alarm, {
             isActive: !alarm.isActive,
           });
@@ -122,7 +138,6 @@ export class App extends Component {
                   onClick={this.toggleAlarmFormVisibility}
                 />
               </div>
-
             </div>
       );
     }
