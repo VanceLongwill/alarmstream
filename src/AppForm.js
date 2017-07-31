@@ -160,21 +160,21 @@ export class AlarmForm extends Component {
 
 const DateSelect = (props) => (
     <div>
-      <h5>Select a date: </h5>
+      <h5>Select a date, then swipe down or click the next button</h5>
       <DateInput moment={props.moment} onUpdate={props.onUpdate} />
     </div>
 );
 
 const TimeSelect = (props) => (
     <div>
-      <h5>Now, add a time: </h5>
+      <h5>Now, enter a time for your alarm </h5>
       <TimeInput moment={props.moment} onUpdate={props.onUpdate} />
     </div>
 );
 
 const TitleSelect = (props) => (
   <div>
-    <h5>Give your alarm a name: </h5>
+    <h5>Give your alarm a name (or skip)</h5>
     <br/><br/><br/><br/>
     <TitleInput value={props.value} onSubmit={props.onSubmit}/>
   </div>
@@ -182,7 +182,7 @@ const TitleSelect = (props) => (
 
 const NoteSelect = (props) => (
   <div>
-    <h5>Finally, add a note to your alarm: </h5>
+    <h5>Finally, add a note to your alarm (or skip)</h5>
     <br/><br/><br/><br/>
     <NoteInput value={props.value} onSubmit={props.onSubmit}/>
   </div>

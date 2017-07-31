@@ -6,7 +6,7 @@ export default class Top extends Component {
     return(
       <div className="top">
         <Header>
-          <Icon name="tasks"/>
+          <span id="lobster">AlarmStream</span>
         </Header>
       </div>
     );

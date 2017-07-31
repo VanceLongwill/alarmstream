@@ -239,6 +239,16 @@ div.extra p {
    margin: 0px auto;
  }
 
+ #lobster {
+   font-family: 'Lobster', cursive;
+   font-size: 10vh;
+   top: 2.2vh;
+   position: absolute;
+   left: 0px;
+   right: 0px;
+   color: black;
+ }
+
 /*
  #nextSlide {
 
