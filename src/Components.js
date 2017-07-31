@@ -57,7 +57,6 @@ class AlarmClock extends Component {
     intervalId: null,
   }
   componentWillUpdate() {
-    console.log('component will update');
     let isRing = (new Date() >= this.props.time);
     if (this.state.isRinging !== isRing ) {
       this.setState({isRinging: isRing});
@@ -92,7 +91,6 @@ class AlarmClock extends Component {
   }
 
   render(){
-    console.log('new render');
     if (this.props.isActive) {
       //console.log('render: is active')
       const ringing = this.state.isRinging ?  <Ringer /> : <Clock time={this.props.time} />;
