@@ -41,7 +41,8 @@ class Alarm extends Component {
   }
 
   render() {
-    const willRing = this.props.active ? (<p>Alarm will ring in <a>{this.props.time.toNow(true)}</a></p>) : (<p><a>Alarm is disabled</a></p>);
+    const alarmWillRingText = this.props.time.isBefore(moment()) ? `Alarm rang ${this.props.time.fromNow()}`  : `Alarm will ring in ${this.props.time.toNow(true)}`;
+    const willRing = this.props.active ? (<p><a>{alarmWillRingText}</a></p>) : (<p><a>Alarm is disabled</a></p>);
     return (
 <Feed.Event className="">
   <Feed.Label>

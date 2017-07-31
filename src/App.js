@@ -39,7 +39,8 @@ export class App extends Component {
      )
    );
  }
- populateAlarms = () => {
+
+  populateAlarms = () => {
 
    const cachedAlarms = localStorage.getItem('alarms');
    if (cachedAlarms) {
@@ -106,7 +107,7 @@ export class App extends Component {
     this.setState({
       alarms: this.state.alarms.map((alarm)=>{
         if (alarm.id === alarmId) {
-          console.log("activated alarm : " + (!alarm.isActive));
+          //console.log("activated alarm: " + (!alarm.isActive));
           return Object.assign({}, alarm, {
             isActive: !alarm.isActive,
           });

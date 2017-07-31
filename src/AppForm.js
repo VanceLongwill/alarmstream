@@ -56,7 +56,7 @@ export class AlarmForm extends Component {
     }
   }
   handleDateUpdate = (date) => {
-    console.log(date);
+    //console.log(date);
       const newMoment = moment(date, "MMM DD YYYY");
       const timeFromMoment = {
         hour:  this.state.time.hour(),

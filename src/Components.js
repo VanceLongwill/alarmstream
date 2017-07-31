@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 import {Segment, Icon, Button, Transition} from 'semantic-ui-react';
 
 class Ringer extends Component {
@@ -30,15 +31,6 @@ class Ringer extends Component {
 
 class Clock extends Component {
 
-  checkRing = () => {
-    let now = new Date();
-    let alarmTime = this.props.time;
-    // console.log(now-alarmTime);
-    if (now>=alarmTime) {
-      this.setState({isRinging: true})
-    }
-  }
-
   render() {
     return(
       <Segment className="clock-segment">
@@ -52,56 +44,26 @@ class Clock extends Component {
 }
 
 class AlarmClock extends Component {
-  state = {
-    isRinging: false,
-    intervalId: null,
-  }
-  componentWillUpdate() {
-    let isRing = (new Date() >= this.props.time);
-    if (this.state.isRinging !== isRing ) {
-      this.setState({isRinging: isRing});
-    }
-  }
-  componentDidMount() {
-    if (this.props.isActive) {
-      // console.log(this.props.time.format("llll") + 'alarm active');
-      let intervalId = setInterval(this.isTimeUp, 1000 );
-      this.setState({intervalId: intervalId})
-    } else {
-      // console.log(this.props.time.format("llll")  + ': Alarm not active');
-      if (this.state.intervalId!==null){
-        clearInterval(this.state.intervalId);
-      }
-    }
-  }
-  isTimeUp = () => {
-    let now = new Date();
-    if (this.state.isRinging) {
-      // console.log(" already ringing -- removing interval ");
-      clearInterval(this.state.intervalId);
-    } else {
-      const isRingingNow =  (now>=this.props.time);
-      // console.log("Not ringing right now, should be ? " + isRingingNow)
-      if (isRingingNow){
-        this.setState({
-          isRinging: isRingingNow
-        });
-      }
-    }
+  constructor(props){
+    super(props);
+    this.state = {
+      isRinging: (this.props.time <= moment()),
+    };
+    let timeUntilRing = (this.props.time - moment());
+    // console.log(timeUntilRing); // .seconds() + " (will ring in) ");
+   this.alarmTimeout = setTimeout(() => {
+    this.setState({ isRinging: true })
+   },  timeUntilRing);
   }
 
   render(){
-    if (this.props.isActive) {
-      //console.log('render: is active')
-      const ringing = this.state.isRinging ?  <Ringer /> : <Clock time={this.props.time} />;
-      return( ringing );
+    if (this.props.isActive && this.state.isRinging) {
+      return( <Ringer /> );
     } else {
-      //console.log("render: not active")
       return(
         <Clock time={this.props.time} />
       );
     }
-
   }
 }
 
