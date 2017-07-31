@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import {Segment, Icon, Button, Transition} from 'semantic-ui-react';
+import Sound from 'react-sound';
 
 class Ringer extends Component {
 
@@ -24,6 +25,15 @@ class Ringer extends Component {
         <Transition animation={'shake'} duration={500} visible={this.state.visible}>
           <Icon size="massive" name="alarm" />
         </Transition>
+        <Sound
+          url='http://soundbible.com/mp3/analog-watch-alarm_daniel-simion.mp3'
+          playStatus={Sound.status.PLAYING}
+          playFromPosition={0}
+          volume={40}
+          // onLoading={}
+          // onPlaying={}
+          // onFinishedPlaying={}
+        />
         <br /><br />
         <div id="alarmButtons">
           <Button basic fluid onClick={this.props.onSnooze}>Snooze</Button>
