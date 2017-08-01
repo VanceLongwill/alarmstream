@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import { TextArea, Input } from 'semantic-ui-react';
+import { TextArea, Input, Grid, Icon} from 'semantic-ui-react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
@@ -54,7 +54,7 @@ export class NoteInput extends Component {
     return(
       <TextArea
         placeholder='Write a note (optional)'
-        id="note-input"
+        id="noteInput"
         rows={8}
         autoHeight={false}
         onChange={this.handleChange}
@@ -99,6 +99,68 @@ export class DateInput extends Component {
       );
   }
 }
+// export class AltTimeInput extends Component {
+//   state = {
+//     time: this.props.moment
+//   }
+//   handleHourIncrement = () => {
+//     this.setState({
+//       time: this.state.time.add(1, 'hours')
+//     });
+//   }
+//   handleMinIncrement = () => {
+//     this.setState({
+//       time: this.state.time.add(1, 'minutes')
+//     });
+//   }
+//   handleHourDecrement = () => {
+//     this.setState({
+//       time: this.state.time.subtract(1, 'hours')
+//     });
+//   }
+//   handleMinDecrement = () => {
+//     this.setState({
+//         time: this.state.time.subtract(1, 'minutes')
+//     });
+//   }
+//   render() {
+//     const hours = this.state.time.format("HH");
+//     const mins =  this.state.time.format("mm");
+//     return(
+//       <div className="timeInput">
+//         <br />
+//         <Grid columns={2}>
+//           <Grid.Row id="incrementButtons">
+//             <Grid.Column>
+//               <Icon name="chevron up" onClick={this.handleHourIncrement}/>
+//             </Grid.Column>
+//             <Grid.Column>
+//               <Icon name="chevron up" onClick={this.handleMinIncrement}/>
+//             </Grid.Column>
+//           </Grid.Row>
+//           <Grid.Row id='timeInputRow'>
+//             <Grid.Column>
+//               <span>{hours}</span>
+//             </Grid.Column>
+//             <Grid.Column>
+//               <span>{mins}</span>
+//             </Grid.Column>
+//           </Grid.Row>
+//           <Grid.Row id="decrementButtons">
+//             <Grid.Column>
+//               <Icon name="chevron down" onClick={this.handleHourDecrement}/>
+//             </Grid.Column>
+//             <Grid.Column>
+//               <Icon name="chevron down" onClick={this.handleMinDecrement}/>
+//             </Grid.Column>
+//           </Grid.Row>
+//         </Grid>
+//
+//       </div>
+//     )
+//   }
+// }
+
 
 export class TimeInput extends Component {
   state = {
@@ -127,15 +189,19 @@ export class TimeInput extends Component {
   handleMinsChange = (event) => {
 
     const inputMins = event.target.value;
+    console.log(inputMins);
     let updatedMinsMoment = this.props.moment.clone();
     const firstAndSecond = Number(inputMins.substr(0,2));
     const secondAndThird = Number(inputMins.substr(1,3));
     const firstAndLast = Number( inputMins.substr(0,1) + inputMins.substr(2,3));
     let validatedMins;
+
     if (secondAndThird < 60) {
       validatedMins = secondAndThird;
     } else if (firstAndLast < 60){
       validatedMins = firstAndLast;
+    } else if (firstAndSecond > 60 && secondAndThird < 60) {
+      validatedMins = secondAndThird;
     } else {
       validatedMins = firstAndSecond;
     }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { Grid, Button, Icon } from 'semantic-ui-react';
-import { Clock } from './Components';
+import { Clock, TonePicker} from './Components';
 import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs';
 import { ViewPager, Frame, Track, View } from 'react-view-pager';
 import './main.css';
+
 
 // import { spring } from 'react-motion';
 // import Transition from 'react-motion-ui-pack';
@@ -33,6 +34,7 @@ export class AlarmForm extends Component {
     "id": this.props.id || null,
     "isActive": this.props.isActive || true,
     "dateCreated": this.props.dateCreated || null,
+    "tone": this.props.tone || "beep",
   }
 
   handleSubmit = () => {
@@ -79,7 +81,11 @@ export class AlarmForm extends Component {
     // componentWillUnmount() {
     //   this.onUnmount={}
     // }
-
+    handleToneUpdate = (toneName) => {
+      this.setState({
+        tone: toneName,
+      });
+    }
     handleViewChange = (currentIndicies) => {
       this.setState({ progress: currentIndicies[0] })
     }
@@ -98,7 +104,9 @@ export class AlarmForm extends Component {
         note={this.state.note}
         time={this.state.time}
         title={this.state.title}
+        tone={this.state.tone}
         onSubmit={this.handleSubmit}
+        onToneUpdate={this.handleToneUpdate}
       />
     ];
 
@@ -176,7 +184,8 @@ const NoteSelect = (props) => (
 );
 
 const AlarmFormSuccess = (props) => (
-  <div id="alarm-form-success">
+  <div id="alarmFormSuccess">
+    <TonePicker tone={props.tone} onUpdate={props.onToneUpdate}/>
     <Icon name='alarm' size="massive" />
     <h3>{props.title}</h3>
     <p>{props.note}</p>

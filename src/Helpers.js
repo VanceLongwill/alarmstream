@@ -10,6 +10,7 @@ export function createNewAlarm (attrs) {
         "id": uuid.v4(),
         "isActive": attrs.isActive,
         "dateCreated": moment(),
+        "tone": attrs.tone,
     }
   );
 

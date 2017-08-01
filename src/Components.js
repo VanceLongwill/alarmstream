@@ -1,7 +1,40 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-import {Segment, Icon, Button, Transition} from 'semantic-ui-react';
+import {Segment, Icon, Button, Transition, Menu} from 'semantic-ui-react';
 import Sound from 'react-sound';
+import { AlarmTones } from './alarmTones';
+
+class TonePicker extends Component {
+  handleSelect = (e, {name}) => {
+    this.props.onUpdate(name);
+  }
+
+  render(){
+    return(
+      <Menu
+        compact
+        widths={AlarmTones.length}
+      >
+        {
+          AlarmTones.map((tone, index) => {
+            return(
+              <Menu.Item
+                key={tone.name}
+                name={tone.name}
+                active={this.props.tone === tone.name}
+                onClick={this.handleSelect}
+              >
+                <Icon name={tone.iconName}></Icon>
+                {tone.name}
+
+              </Menu.Item>
+            );
+          })
+        }
+      </Menu>
+    );
+  }
+}
 
 class Ringer extends Component {
 
@@ -20,13 +53,14 @@ class Ringer extends Component {
   }
 
   render(){
+    const toneUrl = AlarmTones.find(tone => tone.name === this.props.toneName).source;
     return(
       <Segment id="alarm-segment">
         <Transition animation={'shake'} duration={500} visible={this.state.visible}>
           <Icon size="massive" name="alarm" />
         </Transition>
         <Sound
-          url='http://soundbible.com/mp3/analog-watch-alarm_daniel-simion.mp3'
+          url={toneUrl}
           playStatus={Sound.status.PLAYING}
           playFromPosition={0}
           volume={40}
@@ -98,7 +132,7 @@ class AlarmClock extends Component {
 
   render(){
     if (this.props.isActive && this.state.isRinging) {
-      return( <Ringer onSnooze={this.handleSnooze} onTurnOff={this.handleTurnOff}/> );
+      return(<Ringer onSnooze={this.handleSnooze} toneName={this.props.tone} onTurnOff={this.handleTurnOff}/>);
     } else {
       return(
         <Clock time={this.props.time} snoozed={this.state.snoozeVisible}/>
@@ -118,24 +152,10 @@ class AlarmIconToggle extends Component {
   }
 }
 
-class AlarmFormSuccess extends Component {
-  render(){
-    return(
-      <div id="alarm-form-success">
-        <h3>{this.props.title}</h3>
-        <p>{this.props.note}</p>
-        <Clock time={this.props.time}/>
-        <Button positive onClick={this.props.onSubmit} fluid>
-          Add your alarm <Icon name='alarm' />
-        </Button>
-      </div>
-    );
-  }
-}
 
 const AlarmFormOpenButton = (props) => (
   <Button color='black' id='bottomButton' onClick={props.onClick}><Icon name="plus" size="large" /></Button>
 );
 
 
-export { Clock, AlarmIconToggle, AlarmFormSuccess, AlarmFormOpenButton, Ringer, AlarmClock};
+export { Clock, AlarmIconToggle, AlarmFormOpenButton, Ringer, AlarmClock, TonePicker};

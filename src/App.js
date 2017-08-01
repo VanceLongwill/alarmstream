@@ -13,12 +13,16 @@ import './main.css';
 export class App extends Component {
 
   state = {
+    currentTime: moment(),
     alarmFormOpen: false,
     alarms:  [],
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.updateStore(), 1000);
+    this.interval = setInterval(() => {
+      this.updateStore();
+      this.setState({currentTime: moment()});
+    }, 1000);
     this.populateAlarms();
  }
 
@@ -129,6 +133,8 @@ export class App extends Component {
       return (
             <div className="alarm-container">
               <Container>
+                <p id="currentTime">{this.state.currentTime.format("Mo MMMM, HH:mm")}</p>
+                {/* <p id="currentTime">{this.state.currentTime.format("HH:mm:ss")}</p> */}
                 <AlarmsFeed alarms={this.state.alarms}
                   onToggleAlarm={this.handleAlarmToggle}
                   onDeleteAlarm={this.handleAlarmDelete}

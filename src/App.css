@@ -10,7 +10,7 @@ body {
  left: 0;
  z-index: 9999;
  width: 100vw;
- height: 8vh;
+ height: 9vh;
  opacity: 1;
  background-color: hsla(0, 0%, 100%, 0.66);
  border-bottom-style: groove;
@@ -44,6 +44,7 @@ body {
   text-align: center;
 }
 .clock {
+  user-select: none;
   font-size: 40px;
   color: black !important;
   vertical-align: middle;
@@ -72,7 +73,7 @@ textarea {
 }
 .alarm-container {
   margin: -9vh auto;
-  padding-top: 9vh;
+  padding-top: 15vh;
   overflow-y: scroll;
   max-height: 100%;
   max-width: 960px;
@@ -92,10 +93,12 @@ textarea {
 }
 
 .vh-center > div:first-child {
+  padding-top: 10vh;
   margin: 0 auto;
-  padding: 10px;
+  /*padding: 10px;*/
 }
 .vh-center h5 {
+  user-select: none;
   font-size: 3vh;
   color: #000;
 }
@@ -104,6 +107,9 @@ textarea {
   margin: 0px auto;
   text-align: center;
   font-weight: bolder;
+  user-select: none;
+  width: 60%;
+  margin: 0px auto;
 }
 #hoursInput, #minsInput {
   width: 80%;
@@ -123,10 +129,13 @@ textarea {
   color: white !important;
 }*/
 
-#note-input {
+#noteInput {
   background: transparent;
   padding: 20px;
   width: 100%;
+  text-align: center;
+  outline: none;
+  resize: none;
 }
 
 #alarm-form-container{
@@ -177,7 +186,8 @@ textarea {
   color: rgb(186, 178, 182);
 }
 #alarmConfirmButton {
-  margin-top: 10vh;
+  width: 80%;
+  margin: 10vh auto;
 }
 .DayPicker {
   width: 100%;
@@ -240,9 +250,11 @@ div.extra p {
 
  #pagerControls a {
    margin: 0px auto;
+   user-select: none;
  }
 
  #lobster {
+   user-select: none;
    font-family: 'Lobster', cursive;
    font-size: 10vh;
    top: 2.2vh;
@@ -253,7 +265,37 @@ div.extra p {
  }
 
 p#snoozeText {
+  user-select: none;
   padding: 0px;
   margin: 0px auto;
   margin-bottom: -4vh;
+}
+
+#timeInputRow {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+i.chevron.up.icon, i.chevron.down.icon {
+  height: 100%;
+  margin: 0px auto;
+}
+
+#incrementButtons, #decrementButtons {
+  color: #d5d5d5;
+}
+
+#alarmFormSuccess div.menu {
+  width: 80%;
+  margin: 0px auto 5vh auto;
+}
+
+div.event div.ui.three.column.grid {
+  width: 100%;
+}
+
+p#currentTime {
+  padding: 3vh;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 1em;
 }
