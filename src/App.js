@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Card, Icon, Grid, Feed, Form, TextArea, Sidebar, Modal, Segment, Header, Container, Input, Popup, Radio} from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import moment from 'moment';
 import { createNewAlarm } from './Helpers';
 import { AlarmForm } from './AppForm';

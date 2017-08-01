@@ -14,14 +14,3 @@ export function createNewAlarm (attrs) {
   );
 
 }
-function updateAlarm (attrs) {
-
-
-
-}
-
-function deleteAlarm (alarmId) {
-
-  
-
-}

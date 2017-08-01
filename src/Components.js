@@ -53,7 +53,7 @@ class Clock extends Component {
         <span className="clock">
           {this.props.time.format("HH:mm")}
         </span>
-        {this.props.snoozed ? <p><br /><br />Alarm snoozed for 10 mins</p> : ("")}
+        {this.props.snoozed ? <p id="snoozeText"><br /><br />Alarm snoozed for 10 mins</p> : ("")}
       </Segment>
     );
   }
@@ -79,14 +79,19 @@ class AlarmClock extends Component {
       isRinging: false,
       snoozeVisible: true,
     });
-    const tenMins = 600000; // milliseconds
-    this.alarmTimeout = setTimeout(() => this.setState({ isRinging: true}), tenMins);
+    const tenMins = 600000; // 10 minutes in milliseconds
+    this.alarmTimeout = setTimeout(() => {
+      if (this.props.isActive){
+        this.setState({ isRinging: true});
+      }
+    }, tenMins);
     //alert("Alarm snoozed for 10 minutes");
   }
 
   handleTurnOff = () => {
     this.setState({
       isRinging: false,
+      snoozeVisible: false,
     });
     this.props.onDisableAlarm();
   }
@@ -109,22 +114,6 @@ class AlarmIconToggle extends Component {
     const iconToggle = this.props.isActive ? "alarm" : "alarm mute";
     return(
       <Icon name={iconToggle} onClick={this.props.onToggleAlarm} size="large"></Icon>
-    );
-  }
-}
-
-class ButtonStepGroup extends Component {
-  render(){
-    const {backButtonText, forwardButtonText, onBack, onForward} = this.props;
-    return(
-      <div className="buttons-form-bottom">
-        <Button color='yellow' onClick={onBack} inverted>
-          <Icon name='arrow left' /> {backButtonText}
-        </Button>
-        <Button color='green' onClick={onForward} inverted>
-          {forwardButtonText} <Icon name='arrow right' />
-        </Button>
-      </div>
     );
   }
 }

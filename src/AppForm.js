@@ -1,9 +1,9 @@
-import React, { Component, PropTypes} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
-import { Grid, Header, Button, Icon } from 'semantic-ui-react';
+import { Grid, Button, Icon } from 'semantic-ui-react';
 import { Clock } from './Components';
 import { TitleInput, DateInput, TimeInput, NoteInput } from './Inputs';
-import { ViewPager, Frame, Track, View, AnimatedView } from 'react-view-pager';
+import { ViewPager, Frame, Track, View } from 'react-view-pager';
 import './main.css';
 
 // import { spring } from 'react-motion';
@@ -24,19 +24,6 @@ const animations = [{
     [200, 0.15]
   ]
 }];
-
-
-const ProgressBar = ({ progress }) => (
-  <div className="progress-container">
-    <div
-      className="progress-bar"
-      style={{
-        transform: `scaleX(${Math.max(0, Math.min(1, progress))})`,
-      }}
-    />
-  </div>
-)
-const colors = ['#209D22', '#106CCC', '#C1146B', '#11BDBF', '#8A19EA']
 
 export class AlarmForm extends Component {
   state = {

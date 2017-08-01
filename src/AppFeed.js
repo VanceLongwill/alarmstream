@@ -1,23 +1,7 @@
-import React, { Component, PureComponent} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
-import {Confirm, Button, Card, Icon, Grid, Feed, Form, TextArea, Sidebar, Modal, Segment, Header, Container, Input, Popup, Radio} from 'semantic-ui-react';
-import { AlarmClock, AlarmIconToggle, AlarmFormSuccess, Clock } from './Components';
-
-const animations = [{
-  prop: 'scale',
-  stops: [
-    [-200, 0.85],
-    [0, 1],
-    [200, 0.85]
-  ]
-}, {
-  prop: 'opacity',
-  stops: [
-    [-200, 0.15],
-    [0, 1],
-    [200, 0.15]
-  ]
-}];
+import {Confirm, Icon, Grid, Feed } from 'semantic-ui-react';
+import { AlarmClock, AlarmIconToggle } from './Components';
 
 class Alarm extends Component {
   state = {

@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 .top {
  text-align: center;
  position: fixed;
@@ -7,10 +12,9 @@
  width: 100vw;
  height: 8vh;
  opacity: 1;
- background-color: white;
+ background-color: hsla(0, 0%, 100%, 0.66);
  border-bottom-style: groove;
  border-color: #000;
- opacity: 0.9;
 }
 #AlarmApp {
   margin-top: 4vh;
@@ -67,13 +71,11 @@ textarea {
   color: grey;
 }
 .alarm-container {
-  margin: 0px auto;
-  padding: 4vw;
+  margin: -9vh auto;
+  padding-top: 9vh;
   overflow-y: scroll;
-  max-height: 90%;
+  max-height: 100%;
   max-width: 960px;
-  /*padding-left: 10%;
-  padding-right: 10%;*/
 }
 
 .grey-out-text {
@@ -94,8 +96,8 @@ textarea {
   padding: 10px;
 }
 .vh-center h5 {
-  font-size: 2em;
-  color: grey;
+  font-size: 3vh;
+  color: #000;
 }
 .timeInput {
   font-size: 5.5em;
@@ -143,7 +145,7 @@ textarea {
   height: 20%;
   position: fixed;
   width: 100%;
-  background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255,255,255,0));
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
 }
 #bottomButton{
   position: fixed;
@@ -155,6 +157,7 @@ textarea {
   margin-bottom: 3%;
   background-color: white;
   border: 0.5px solid rgb(144, 144, 144);
+
 }
 #bottomButton > i {
   color: #000;
@@ -249,10 +252,8 @@ div.extra p {
    color: black;
  }
 
-/*
- #nextSlide {
-
- }
-#prevSlide  {
-
-}*/
+p#snoozeText {
+  padding: 0px;
+  margin: 0px auto;
+  margin-bottom: -4vh;
+}

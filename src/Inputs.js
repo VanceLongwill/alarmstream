@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import {Icon, TextArea, Input} from 'semantic-ui-react';
-import moment from 'moment';
+import { TextArea, Input } from 'semantic-ui-react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
