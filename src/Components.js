@@ -44,8 +44,11 @@ class Ringer extends Component {
   }
 
   componentDidMount(){
-    const animationIntervalId = setInterval(() => this.setState({visible: !this.state.visible}),1500);
-    this.setState({visible: true});
+    const animationId = setInterval(() => this.setState({visible: !this.state.visible}),1500);
+    this.setState({
+      visible: true,
+      animationIntervalId: animationId,
+    });
   }
 
   componentWillUnmount(){

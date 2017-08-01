@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import { TextArea, Input, Grid, Icon} from 'semantic-ui-react';
+import { TextArea, Input, Icon} from 'semantic-ui-react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
