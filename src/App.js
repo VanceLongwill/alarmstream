@@ -20,8 +20,8 @@ export class App extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
+      this.setState({ currentTime: moment() })
       this.updateStore();
-      this.setState({currentTime: moment()});
     }, 1000);
     this.populateAlarms();
  }
@@ -132,9 +132,10 @@ export class App extends Component {
     } else {
       return (
             <div className="alarm-container">
+              <div id="currentTime">
+                {this.state.currentTime.format("Mo MMMM, HH:mm")}
+              </div>
               <Container>
-                <p id="currentTime">{this.state.currentTime.format("Mo MMMM, HH:mm")}</p>
-                {/* <p id="currentTime">{this.state.currentTime.format("HH:mm:ss")}</p> */}
                 <AlarmsFeed alarms={this.state.alarms}
                   onToggleAlarm={this.handleAlarmToggle}
                   onDeleteAlarm={this.handleAlarmDelete}

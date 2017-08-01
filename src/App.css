@@ -12,8 +12,7 @@ body {
   width: 100vw;
   height: 100%;
   max-height: 9vh;
-  opacity: 1;
-  background-color: hsla(0, 0%, 100%, 0.66);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.5));
   border-bottom-style: groove;
   border-color: #000;
   border-width: 0.7vh;
@@ -74,7 +73,7 @@ textarea {
   color: grey;
 }
 .alarm-container {
-  margin: -9vh auto;
+  margin: 0px auto;
   padding-top: 15vh;
   overflow-y: scroll;
   max-height: 100%;
@@ -156,6 +155,8 @@ textarea {
   height: 20%;
   position: fixed;
   width: 100%;
+  background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
+  background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
   background: linear-gradient(to top, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
 }
 #bottomButton{
@@ -259,6 +260,7 @@ div.extra p {
    -webkit-user-select: none;
    -moz-user-select: none;
    -ms-user-select: none;
+    cursor: default;
    user-select: none !important;
    font-family: 'Lobster', cursive;
    font-size: 10vh;
@@ -267,7 +269,6 @@ div.extra p {
    left: 0px;
    right: 0px;
    color: black;
-   cursor: default;
  }
 
 p#snoozeText {
@@ -299,9 +300,42 @@ div.event div.ui.three.column.grid {
   width: 100%;
 }
 
-p#currentTime {
-  padding: 3vh;
+#currentTime {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+  user-select: none !important;
+  font-family: 'Lobster', cursive;
   margin: 0px auto;
   text-align: center;
-  font-size: 1em;
+  color: #fff6dd;
+  text-shadow: -1px 1px 6px black;
+  font-size: 1.2em;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
+  z-index: 99 !important;
+  padding-top: 1vh;
+  width: 100%;
+  height: 100%;
+  max-height: 6vh;
+  top: 5vh;
+}
+
+#topHeader {
+
+  background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
+  background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255,0));
+
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  max-height: 14vh;
 }
