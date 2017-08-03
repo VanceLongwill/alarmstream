@@ -9,6 +9,7 @@
 
 
 ---
+
 Welcome to the home of **AlarmStream**, a clean and usable alarm clock web app built using React.js
 
 The idea behind the app was to create a minimalist alarm application which was straightforward and intuitive to use.
@@ -16,6 +17,8 @@ The idea behind the app was to create a minimalist alarm application which was s
 This app was built largely as a learning project to gain further experience with React. I'm sharing it as I want to contribute to the open source community. 
 
 Suggestions, improvements, and bug reports are more than welcome. 
+
+*Current Version: 0.1*
 
 #Key features
 * Add, remove and edit alarms from the feed

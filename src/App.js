@@ -13,6 +13,7 @@ import './main.css';
 export class App extends Component {
 
   state = {
+    version: 0.1,
     currentTime: moment(),
     alarmFormOpen: false,
     alarms:  [],
