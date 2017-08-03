@@ -1,8 +1,3 @@
-<span style="color: #000; text-shadow: 0px 0px 3px #000; font-size: 48px; text-align: center; margin: 0px auto; padding: 0px; width: 100%;">
-	AlarmStream
-</span>
-<br />
-
 ---
 
 [AlarmStream](https://vancelongwill.github.io/alarmstream/) *(live demo on GitHub pages)*
@@ -34,7 +29,7 @@ Suggestions, improvements, and bug reports are more than welcome.
 *  Animated ring icon
 
 
-##Dependencies
+#Dependencies
 
 * [Create React App](https://github.com/facebookincubator/create-react-app) was used as a boilerplate
 * [Babel](https://github.com/babel/babel) including the transform-class-properties plugin for es6+ features & syntax
@@ -45,7 +40,7 @@ Suggestions, improvements, and bug reports are more than welcome.
 * [React-view-pager](https://github.com/souporserious/react-view-pager) for animated transitions on the alarm form
 
 
-##Planned Updates
+#Planned Updates
 
 * Version control
 * Updated animations 
