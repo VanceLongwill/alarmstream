@@ -1,4 +1,4 @@
-export const AlarmTones = [
+export const alarmTones = [
   {
     'name': 'beep',
     'source': 'http://soundbible.com/mp3/analog-watch-alarm_daniel-simion.mp3',
