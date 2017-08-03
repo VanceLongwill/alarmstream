@@ -87,9 +87,12 @@ class Clock extends Component {
   render() {
     return(
       <Segment className="clock-segment">
-        <span className="clock">
+        <div id="alarmDate">
+          {this.props.time.format("DD/MM/YY")}
+        </div>
+        <div className="clock">
           {this.props.time.format("HH:mm")}
-        </span>
+        </div>
         {this.props.snoozed ? <p id="snoozeText"><br /><br />Alarm snoozed for 10 mins</p> : ("")}
       </Segment>
     );
