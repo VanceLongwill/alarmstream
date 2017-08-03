@@ -6,8 +6,8 @@ import { AlarmForm } from './AppForm';
 import { AlarmsFeed} from './AppFeed';
 import {AlarmFormOpenButton} from './Components';
 import { exampleAlarms } from './exampleAlarmData';
-import './App.css';
-import './main.css';
+import './css/App.css';
+import './css/Main.css';
 
 
 export class App extends Component {

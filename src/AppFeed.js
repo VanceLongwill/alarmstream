@@ -28,7 +28,7 @@ class Alarm extends Component {
     const alarmWillRingText = this.props.time.isBefore(moment()) ? `Alarm rang ${this.props.time.fromNow()}`  : `Alarm will ring in ${this.props.time.toNow(true)}`;
     const willRing = this.props.active ? (<p><a>{alarmWillRingText}</a></p>) : (<p><a>Alarm is disabled</a></p>);
     return (
-<Feed.Event className="">
+<Feed.Event>
   <Feed.Label>
     <AlarmIconToggle onToggleAlarm={this.handleToggle} isActive={this.props.active}/>
   </Feed.Label>
@@ -42,7 +42,7 @@ class Alarm extends Component {
       <Grid columns={3}>
 
         <AlarmClock time={this.props.time} tone={this.props.tone} isActive={this.props.active} onDisableAlarm={this.handleToggle}/>
-        <Icon name="trash" size="large" onClick={this.handleTrashClick}/>
+        <Icon name="trash" size="large" onClick={this.handleTrashClick} />
         <Confirm
           open={this.state.showConfirmDelete}
           onCancel={this.toggleConfirmDeleteAlert}
@@ -83,6 +83,11 @@ class Alarm extends Component {
       return(
       <Feed>
         {feedItemsList}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </Feed>
 
     );
