@@ -15,7 +15,8 @@ Suggestions, improvements, and bug reports are more than welcome.
 
 *Current Version: 0.1*
 
-#Key features
+**Key features**
+
 * Add, remove and edit alarms from the feed
 * Mobile first, responsive minimalist design
 * Swipeable menu
@@ -29,7 +30,7 @@ Suggestions, improvements, and bug reports are more than welcome.
 *  Animated ring icon
 
 
-#Dependencies
+**Dependencies**
 
 * [Create React App](https://github.com/facebookincubator/create-react-app) was used as a boilerplate
 * [Babel](https://github.com/babel/babel) including the transform-class-properties plugin for es6+ features & syntax
@@ -40,7 +41,7 @@ Suggestions, improvements, and bug reports are more than welcome.
 * [React-view-pager](https://github.com/souporserious/react-view-pager) for animated transitions on the alarm form
 
 
-#Planned Updates
+**Planned Updates**
 
 * Version control
 * Updated animations 
