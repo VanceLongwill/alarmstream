@@ -5,7 +5,7 @@
 
 ---
 
-#[AlarmStream](https://vancelongwill.github.io/alarmstream/) *(live demo on GitHub pages)*
+[AlarmStream](https://vancelongwill.github.io/alarmstream/) *(live demo on GitHub pages)*
 
 
 ---
@@ -51,6 +51,7 @@ Suggestions, improvements, and bug reports are more than welcome.
 * Updated animations 
 * Code cleanup, following Airbnb's [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 * Installation guide
+* Snooze rewrite
 
 
 **Future Possibilties**
