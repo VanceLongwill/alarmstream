@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "AlarmStream",
+  "name": "A simple react.js alarm app with feed",
   "icons": [
     {
       "src": "favicon.ico",
