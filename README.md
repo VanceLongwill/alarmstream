@@ -5,7 +5,7 @@
 
 ---
 
-#[Go to AlarmStream](https://vancelongwill.github.io/alarmstream/) *(live on GitHub pages)*
+#[AlarmStream](https://vancelongwill.github.io/alarmstream/) *(live demo on GitHub pages)*
 
 
 ---
