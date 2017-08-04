@@ -17,10 +17,6 @@ export default class AlarmApp extends Component {
     alarmFormOpen: false,
     alarms: [],
   };
-  //
-  // shouldComponentUpdate(nextProps, nextState){
-  //
-  // }
 
   componentDidMount() {
     this.interval = setInterval(() => {
