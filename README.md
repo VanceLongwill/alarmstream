@@ -28,6 +28,7 @@ Suggestions, improvements, and bug reports are more than welcome.
 	- Alarms are saved between sessions using the [localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage) browser API
 *  Toggle alarms on the feed
 *  Animated ring icon
+*  Follows Airbnb's standard - [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 
 
 **Dependencies**
@@ -45,7 +46,6 @@ Suggestions, improvements, and bug reports are more than welcome.
 
 * Version control
 * Updated animations 
-* Code cleanup, following Airbnb's [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 * Installation guide
 * Snooze rewrite
 
