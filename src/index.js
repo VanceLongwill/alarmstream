@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import Top from './components/Top'
-import App from './App';
+import Main from './components/Main';
 import registerServiceWorker from './registerServiceWorker';
+import './css/App.css';
+import './css/Main.css';
 
-const Main = () => (
-  <div id='AlarmApp'>
-    <Top />
-    <App />
-  </div>
-);
-
-ReactDOM.render( <Main />,
+ReactDOM.render(<Main />,
   document.getElementById('root'));
 registerServiceWorker();
